@@ -82,6 +82,11 @@ def scrapper_lenovo(file, line):
      file.write("->")
      file.write(line[3])
      file.write("\n")
+    else:
+      file.write(warrant)
+      file.write("->")
+      file.write(line[3])
+      file.write("\n")
    except:
       file.write("Status Unknown")
       file.write("->")
@@ -126,6 +131,7 @@ def scrapper_HP(file, line):
 
 def check_lines(lines):
    n = 1
+   num_lines = len(lines)
    #open and create the file that will contain the output
    file = open(pathes[2],"a+")
    #check every line to see if one of the three website as of 2019 that display warranty status contain information about the product
@@ -139,6 +145,7 @@ def check_lines(lines):
       elif "Hewlett-Packard" in line[17] or "HP" in line[17]:
          scrapper_HP(file, line)
       n = n + 1
+      print(n, "file done in ", num_lines)
      except:
       n = n + 1
    file.close()
